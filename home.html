@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!--  <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<title>主系统显示</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/home.css">
+	<script src="js/Clock.js"></script>
+	<style>
+      a:hover,a:visited,a:link{
+	text-decoration: none;
+	color: #000;
+      }
+	</style>
+</head>
+<body>
+	<header>
+	   <a href="./home.html"><img src="./images/logo.png"/><a>
+       <div id="sub-nav">
+       	  <ul>
+       	  	<li><a href="logout.php" style="color:white;">安全退出</a></li>
+       	  	<li><span>name</span></li>
+       	  </ul>
+       </div>   
+	</header>
+	 <div id="main">
+    	<div id="welcome">欢迎登录使用!</span></div>       
+        <div id="adminop">
+                <span id="clock" style="color: red;top:8px;right:30px;position:relative; "></span>
+                  <script type="text/javascript">
+                   var clock = new Clock();
+                  clock.display(document.getElementById("clock"));
+                  </script>
+        </div>
+    </div>
+    <div id="cont">
+    <!-- 侧边栏 -->
+	<aside>
+	  <ul id="nav">
+        <li class="active" id="introduction"><a href="home.html"><span class="glyphicon glyphicon-file"></span>个人信息</a></li>
+        <li id="notify"><a href="haoyou.html"><span class="glyphicon glyphicon-envelope"></span>好友信息</a></li>
+        <li id="search"><a href="search.html"><span class="glyphicon glyphicon-search"></span>站内搜索</a></li>
+        <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span>退出系统</a></li>
+      </ul>
+	</aside>
+    
+    <article>
+       <div class="img-box">
+       	  <img src="./images/user.png" alt="个人图片" width="100px;">
+       </div>
+    	<div class="warbox">
+    		 <table cellpadding="0" cellspacing="0">
+    		 	<tr>
+    		 		<td>&nbsp;&nbsp;&nbsp;&nbsp;姓名：</td>
+    		 		<td class="stand">王蒙</td>
+    		 		<td>性别：</td>
+    		 		<td class="stand">男</td>
+    		 	</tr>
+    		 	<tr>
+    		 		<td>手机号：</td>
+    		 		<td class="stand">15829316762</td>
+    		 		<td>邮箱：</td>
+    		 		<td class="stand">fireflywm@qq.com</td>
+    		 	</tr>
+    		 </table>
+    	</div>
+     <hr / style="width: 80%;">
+      <div id="user_account">
+       <h4>账户安全</h4>
+       <p>
+           <span class="glyphicon glyphicon-lock"></span>
+           账号密码
+            <span type="button" id="modify" data-toggle="modal" data-target="#myModal1">
+           修改
+            </span>
+       </p>
+     </div>
+
+       <!-- Modal -->
+            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">密码修改</h4>
+                  </div> 
+                 <form action="edit.php" method="post">
+                    <div class="modal-body">
+                        初始密码:<input type="password" name="pwd_pre" /><br/><br/>
+                        改后密码:<input type="password" name="pwd_new"/><br/><br/>
+                        确认密码:<input type="password" name="pwd_verf"/>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                      <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+                </div>
+              </div>
+            </div>
+
+   </div><!-- cont -->
+    </article>
+    </div>
+    <div id="footer">
+    	 <p><a href="#">关于我</a> &nbsp;&nbsp; | <a href="#">声明</a>&nbsp;&nbsp; | <a href="#">联系我</a>&nbsp;&nbsp; | <a href="#">友情链接</a></p> 
+     <p>CopyRight@Firefly in XUPT</p>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/common.js"></script>
+</body>
+</html>

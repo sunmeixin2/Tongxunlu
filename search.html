@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>主系统显示</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/home.css">
+	
+	<script src="js/Clock.js"></script>
+	<style>
+  table tr th,table tr{text-align: center;}
+   #nav a{color: black;}
+   .change{margin-right: 20px;color: orange;}
+  article h2{
+      margin-bottom: 30px;
+    }  
+     article input[type="text"]{
+        width: 60%;
+        height:40px;
+        border-radius: 10px;
+        outline: none;
+      }
+      article input[type="submit"]{
+        width: 10%;
+        height:40px;
+        border-radius: 10px;
+        font-size: 16px;
+        outline: none;
+      }
+      article form{padding:10px;}
+      /*a:hover,a:visited,a:link{
+	text-decoration: none;
+	color: #000;
+}*/
+       /*.change,.delete{color: blue;}*/
+	</style>
+</head>
+<body>
+	<header>
+	   <a href="./home.html"><img src="./images/logo.png"/><a>
+       <div id="sub-nav">
+       	  <ul>
+       	  	<li><a href="#" style="color:white;">安全退出</a></li>
+       	  	<li><span>name</span></li>
+       	  </ul>
+       </div>   
+	</header>
+	 <div id="main">
+    	<div id="welcome">欢迎登录使用!</span></div>       
+        <div id="adminop">
+                <span id="clock" style="color: red;top:8px;right:30px;position:relative; "></span>
+                  <script type="text/javascript">
+                   var clock = new Clock();
+                  clock.display(document.getElementById("clock"));
+                  </script>
+        </div>
+    </div>
+    <div id="cont">
+    <!-- 侧边栏 -->
+	<aside>
+	  <ul id="nav">
+        <li id="introduction"><a href="home.html"><span class="glyphicon glyphicon-file"></span>个人信息</a></li>
+        <li id="notify"><a href="haoyou.html"><span class="glyphicon glyphicon-envelope"></span>好友信息</a></li>
+        <li class="active" id="search"><a href="search.html"><span class="glyphicon glyphicon-search"></span>站内搜索</a></li>
+        <li id="quit"><span class="glyphicon glyphicon-off"></span>退出系统</li>
+      </ul>
+	</aside>
+    
+    <article>
+      <form action=" "method="post" >
+        <input type="text" name="search" placeholder="通过姓名查找好友"><input type="submit" value="搜索">
+      </form>
+
+    <!--   显示搜索内容 -->
+      <div>
+         <!-- 信息展示区 -->
+       <table class="table table-bordered">
+       <tr>
+        <th style="width: 30px;">姓名</th>
+        <th style="width: 30px;">性别</th>
+        <th style="width: 50px;">电话号码</th>
+        <th style="width: 50px;">邮箱</th>
+        <th style="width: 150px;">家庭住址</th>
+        <th style="width: 100px;">操作</th>
+        </tr>
+        <tbody>
+          <tr>
+             <td>王蒙</td>
+             <td>男</td>
+             <td>15829316762</td>
+             <td>1834716579@qq.com</td>
+             <td>陕西省西安市</td>
+             <td><a href="update_haoyou.php" class="change">修改</a><a href="delete.php" class="delete">删除</a></td>
+            </tr>
+        </tbody>
+        </table>
+      </div>
+    </article>
+    </div>
+
+    <div id="footer">
+    	 <p><a href="#">关于我</a> &nbsp;&nbsp; | <a href="#">声明</a>&nbsp;&nbsp; | <a href="#">联系我</a>&nbsp;&nbsp; | <a href="#">友情链接</a></p> 
+     <p>CopyRight@Firefly in XUPT</p>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/common.js"></script>
+    <script>
+    	// var aChange = $(".change");
+    	// alert(aChange.length);
+    </script>
+</body>
+</html>

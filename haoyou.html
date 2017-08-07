@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>主系统显示</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/home.css">
+	<link rel="stylesheet" href="css/haoyou.css">
+	<script src="js/Clock.js"></script>
+	<style>
+       table tr th,table tr{text-align: center;}
+       .change{margin-right: 20px;color: orange;}
+       .change,.delete{cursor: pointer;}
+       tbody>tr>a{
+	text-decoration: none;
+	color: blue;
+      }
+      #nav a{color: black;}
+      .add button{
+	    width: 80px;
+	    height: 25px;
+	    color: #fff;
+	    border-radius: 5px;
+	    border: none;
+	    outline: none;
+	    cursor: pointer;
+	    margin-top:10px;
+	    margin-bottom: 15px;
+	    margin-left: 10px;
+	    background-color: #006699;
+       }
+       .list-body{font-size: 15px;width: 300px;height:200px;margin:0 auto;}
+       .list-body input{
+       	width: 300px;
+        height: 40px;
+        margin: 5px;
+       }
+       .sub-button{width: 200px;text-align: center;
+        margin-left: 45px;
+        border-radius: 10px;
+        color: white;
+        background: blue;
+        outline: none;
+        }
+      /*a:hover,a:visited,a:link{
+	text-decoration: none;
+	color: #000;
+}*/
+       /*.change,.delete{color: blue;}*/
+	</style>
+</head>
+<body>
+<!-- 弹框显示 -->
+    <div id="whole" style="display: none;">
+     <div id="chmod">
+     <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3>好友信息修改</h3>
+        <form action="update_haoyou.php" method="post">
+        <div class="person-info">  
+           <div class="row">
+            好友姓名：<input type="text" name="name" id="per-name">
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别:<select name="sex" id="per-sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                  </select><br>
+             <div class="row">
+             电话号码：<input type="text" name="tel" id="per-number">
+            </div>
+             <div class="row">
+              邮箱信息：<input type="text" name="email" id="per-email">
+            </div>
+             <div class="row">
+              住宅地址：<input type="text" name="address" id="per-address">
+            </div><br><br>
+            <button class="btn sub-button">确认修改</button>
+        </div>
+        </form>
+      </div>
+     </div>
+
+	<header>
+	   <a href="./home.html"><img src="./images/logo.png"/><a>
+       <div id="sub-nav">
+       	  <ul>
+       	  	<li><a href="#" style="color:white;">安全退出</a></li>
+       	  	<li><span>name</span></li>
+       	  </ul>
+       </div>   
+	</header>
+	 <div id="main">
+    	<div id="welcome">欢迎登录使用!</span></div>       
+        <div id="adminop">
+                <span id="clock" style="color: red;top:8px;right:30px;position:relative; "></span>
+                  <script type="text/javascript">
+                   var clock = new Clock();
+                  clock.display(document.getElementById("clock"));
+                  </script>
+        </div>
+    </div>
+    <div id="cont">
+    <!-- 侧边栏 -->
+	<aside>
+	  <ul id="nav">
+        <li id="introduction"><a href="home.html"><span class="glyphicon glyphicon-file"></span>个人信息</a></li>
+        <li class="active" id="notify"><a href="haoyou.html"><span class="glyphicon glyphicon-envelope"></span>好友信息</a></li>
+        <li id="search"><a href="search.html"><span class="glyphicon glyphicon-search"></span>站内搜索</a></li>
+        <li><span class="glyphicon glyphicon-off"></span>退出系统</li>
+      </ul>
+	</aside>
+    
+    <article>
+         <!-- 添加按钮 -->
+        <div class="add" style="width: 80px;"><button data-toggle="modal" data-target="#myModal">添加好友+</button></div>
+
+        <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">增加好友信息+</h4>
+                  </div> 
+                 <form action="add.php" method="post">
+                    <div class="modal-body">
+                       <div class="list-body">
+                       <label>
+                       <input type="text" name="name" placeholder="好友姓名" required>
+                       </label><br>
+                       性别:<select name="sex" id="Sex">
+				            <option value="男">男</option>
+				            <option value="女">女</option>
+				          </select><br>
+                       <input type="text" placeholder="电话号码" name="telnumber" required />
+                       <input type="email" name="email" placeholder="邮箱地址" required/>
+                       <input type="text" name="address" placeholder="家庭住址" required/>
+                       </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                      <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+        <!-- 信息展示区 -->
+       <table class="table table-bordered">
+       <tr>
+        <th style="width: 30px;">姓名</th>
+        <th style="width: 30px;">性别</th>
+        <th style="width: 50px;">电话号码</th>
+        <th style="width: 50px;">邮箱</th>
+        <th style="width: 150px;">家庭住址</th>
+        <th style="width: 100px;">操作</th>
+        </tr>
+        <tbody>
+        	<tr>
+        	   <td>王蒙</td>
+        	   <td>女</td>
+        	   <td>15829316762</td>
+        	   <td>1834716579</td>
+        	   <td>陕西省西安市</td>
+        	   <td><a class="change">修改</a><a class="delete">删除</a></td>
+          </tr>
+            <tr class="info">
+          	   <td>王蒙</td>
+          	   <td>男</td>
+          	   <td>15829316762</td>
+          	   <td>1834716579@qq.com</td>
+          	   <td>陕西省西安市</td>
+          	   <td><a class="change">修改</a><a class="delete">删除</a></td>
+            </tr>	
+             <tr class="info">
+          	   <td>王蒙</td>
+          	   <td>男</td>
+          	   <td>15829316762</td>
+          	   <td>1834716579@qq.com</td>
+          	   <td>陕西省西安市</td>
+          	   <td><a class="change">修改</a><a class="delete">删除</a></td>
+            </tr>		
+             <tr>
+        	   <td>zhangsan</td>
+        	   <td>男</td>
+        	   <td>15829316762</td>
+        	   <td>1834716579@qq.com</td>
+        	   <td>陕西省西安市</td>
+        	   <td><a class="change">修改</a><a class="delete">删除</a></td>
+            </tr>		
+             <tr class="warning">
+        	   <td>李四</td>
+        	   <td>女</td>
+        	   <td>15829316762</td>
+        	   <td>1834716579@qq.com</td>
+        	   <td>陕西省西安市</td>
+        	   <td><a class="change">修改</a><a class="delete">删除</a></td>
+            </tr>		
+             <tr>
+        	   <td>王蒙</td>
+        	   <td>男</td>
+        	   <td>15829316762</td>
+        	   <td>1834716579@qq.com</td>
+        	   <td>陕西省西安市</td>
+        	   <td><a class="change">修改</a><a class="delete">删除</a></td>
+            </tr>
+            <tr>
+        	   <td>王蒙</td>
+        	   <td>男</td>
+        	   <td>15829316762</td>
+        	   <td>1834716579@qq.com</td>
+        	   <td>陕西省西安市</td>
+        	   <td><a class="change">修改</a><span  class="delete">删除</span></td>
+            </tr>			
+        </tbody>
+    </table>
+    </article>
+    </div>
+    <div id="footer">
+    	 <p><a href="#">关于我</a> &nbsp;&nbsp; | <a href="#">声明</a>&nbsp;&nbsp; | <a href="#">联系我</a>&nbsp;&nbsp; | <a href="#">友情链接</a></p> 
+     <p>CopyRight@Firefly in XUPT</p>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+     <script src="./js/common.js"></script>
+    <script>
+      // 选择对应行进行修改操作
+    	var alen = $(".change").length;
+    	// alert(alen);
+       for (var i = 0; i < alen; i++) {
+          $(function(i){
+             $(".change").eq(i).click(function(){
+              //alert(i);
+              $("#whole").css('display','block');
+                var Name = $(this).parent().parent().children()[0].innerHTML;
+                var Sex = $(this).parent().parent().children()[1].innerHTML;
+                var Tnumber = $(this).parent().parent().children()[2].innerHTML;
+                var Email = $(this).parent().parent().children()[3].innerHTML;
+                var Address = $(this).parent().parent().children()[4].innerHTML;
+                // var c = $(this).parent().parent().children()[0];
+                $("#per-name").val(Name);
+                 $("#per-sex option:selected").text(Sex);
+                $("#per-number").val(Tnumber);
+                $("#per-email").val(Email);
+                $("#per-address").val(Address);
+              //  console.log(name);
+
+             })
+          }(i))
+       }
+       $(".close").click(function(){
+           $("#whole").css('display','none');
+       })
+    </script>
+</body>
+</html>
